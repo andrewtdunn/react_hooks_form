@@ -6,11 +6,16 @@ const useForm = (callback, validate) => {
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    useEffect(() => {
+    useEffect(() => {  
         if (Object.keys(errors).length === 0 && isSubmitting) {
             callback();
         }
     }, [errors, callback, isSubmitting]);
+
+    useEffect(() => {
+        // take action when isVisible Changed
+        setErrors(validate(values));
+     }, [values, validate])
 
     const handleSubmit = (event) => {
         console.log("handleSubmit");
@@ -20,8 +25,10 @@ const useForm = (callback, validate) => {
 
     const handleChange = (event) => {
         event.persist();
+        console.log(event.target.name, event.target.value);
         setValues(values => ({...values, [event.target.name]: event.target.value}));
-        setErrors(validate(values));
+        console.log("values", values);
+        
     }
 
     return {

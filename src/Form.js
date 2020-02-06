@@ -59,7 +59,7 @@ const Form = () => {
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" className="button is-block is-info is-fullwidth">Login</button>
+                            <button type="submit" className="button is-block is-info is-fullwidth" disabled={Object.keys(errors).length !== 0}>Login</button>
                         </form>
                     </div>
                 </div>
