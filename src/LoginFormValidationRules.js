@@ -1,21 +1,28 @@
+var emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
 export default function validate(values) {
     let errors = {};
+    let messageLength = 250
+    if (!(values.visitor || values.email || values.message)){
+        errors.empty = true;
+    }
+    
     if (!values.visitor) {
-        errors.visitor = 'Name is required';
+        errors.visitor = "name required";
     } else if (/<\/?[a-z][\s\S]*>/i.test(values.visitor)){
-        errors.visitor = 'Name is invalid.';
+        errors.visitor = "valid name required";
     }
     if (!values.email) {
-        errors.email = 'Email address is required';
-    } else if (!/^(([^<>()[]\\.,;:\s@"]+(\.[^<>()[]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(values.email)){
-        errors.email = 'Email address is invalid';
+        errors.email = "email required";
+    } else if (!emailRegex.test(values.email)){
+        errors.email = "valid email required";
     }
     if (!values.message) {
-        errors.message = 'Message is required';
+        errors.message = "message required";
     } else if (/<\/?[a-z][\s\S]*>/i.test(values.message)){
-        errors.message = 'Message must be valid';
-    } else if (values.message.length > 10) {
-        errors.message = "Too long son!!";
+        errors.message = "valid message required";
+    } else if (values.message.length > messageLength) {
+        errors.message = `message must be less than ${messageLength} chars`;
     }
     return errors;
 }

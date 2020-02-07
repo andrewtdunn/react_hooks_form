@@ -6,6 +6,7 @@ import * as serviceWorker from './serviceWorker';
 
 // Importing the Bulma CSS library
 import 'bulma/css/bulma.css';
+import './fontawesome';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
