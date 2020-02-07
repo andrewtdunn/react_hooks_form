@@ -24,9 +24,9 @@ const Form = () => {
                     <div className="box">
                         <form onSubmit={handleSubmit}>
                             <div className="field">
-                                <label className="label">Name</label>
                                 <div className="control has-icons-left has-icons-right">
                                     <input 
+                                        placeholder="name"
                                         className={`input ${!errors.empty && (errors.visitor ? 'is-danger' : 'is-success')}`}
                                         type="text"
                                         name="visitor"
@@ -51,9 +51,9 @@ const Form = () => {
                                 </div>
                             </div> 
                             <div className="field">
-                                <label className="label">Email</label>
                                 <div className="control has-icons-left has-icons-right">
                                     <input 
+                                        placeholder="email"
                                         className={`input ${!errors.empty && (errors.email ? 'is-danger' : 'is-success')}`}
                                         type="text"
                                         name="email"
@@ -78,9 +78,9 @@ const Form = () => {
                                 </div>
                             </div>
                             <div className="field">
-                                <label className="label">Message</label>
                                 <div className="control">
                                     <textarea 
+                                        placeholder="message"
                                         className={`input ${!errors.empty && (errors.message ? 'is-danger' : 'is-success')}`}
                                         name="message" 
                                         onChange={handleChange}

@@ -8,7 +8,7 @@ export const formRules = [
     {
         id: 2,
         field: 'visitor',
-        name: 'Name valid',
+        name: 'html not allowed',
         valid: false
     },
     {
@@ -32,7 +32,7 @@ export const formRules = [
     {
         id: 6,
         field: 'message',
-        name: 'Message valid',
+        name: 'html not allowed',
         valid: false
     },
     {
